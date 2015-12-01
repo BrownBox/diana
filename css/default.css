@@ -1,0 +1,25 @@
+body {position: static !important;}
+
+.hero {min-height: 350px; background-size: cover; background-position: center center;}
+
+.uppercase {text-transform: uppercase;}
+.lowercase {text-transform: lowercase;}
+
+#template-name {background-color: rgba(255, 255, 255, 0.25); bottom: 0; display: inline-block; opacity: 0.5; padding: 1rem; position: fixed; right: 0;}
+
+/* Default WP styles */
+img.alignright { float: right; margin: 0 0 1em 1em; }
+img.alignleft { float: left; margin: 0 1em 1em 0; }
+img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+.alignright { float: right; }
+.alignleft { float: left; }
+.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+
+/* Admin bar indicators */
+#wpadminbar #wp-admin-bar-root-default .bb .ab-item, #wpadminbar #wp-admin-bar-root-default .bb .ab-item:hover {color: white;}
+#wpadminbar #wp-admin-bar-root-default .bb.dev .ab-item, #wpadminbar #wp-admin-bar-root-default .bb.dev .ab-item:hover,
+#wpadminbar #wp-admin-bar-root-default .bb.broken .ab-item, #wpadminbar #wp-admin-bar-root-default .bb.broken .ab-item:hover {background-color: red;}
+#wpadminbar #wp-admin-bar-root-default .bb.stage .ab-item, #wpadminbar #wp-admin-bar-root-default .bb.stage .ab-item:hover,
+#wpadminbar #wp-admin-bar-root-default .bb.wip .ab-item, #wpadminbar #wp-admin-bar-root-default .bb.wip .ab-item:hover {background-color: darkorange;}
+#wpadminbar #wp-admin-bar-root-default .bb.prod .ab-item, #wpadminbar #wp-admin-bar-root-default .bb.prod .ab-item:hover,
+#wpadminbar #wp-admin-bar-root-default .bb.stable .ab-item, #wpadminbar #wp-admin-bar-root-default .bb.stable .ab-item:hover {background-color: green;}
