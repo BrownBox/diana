@@ -27,7 +27,7 @@ class bb_enqueue {
         // Theme styles
         wp_enqueue_style('theme_default', get_stylesheet_directory_uri().'/css/default.css', array(), filemtime(get_stylesheet_directory().'/css/default.css'));
         wp_enqueue_style('theme_style', get_stylesheet_directory_uri().'/css/style.css', array(), filemtime(get_stylesheet_directory().'/css/style.css'));
-        wp_enqueue_style('theme_dynamic', get_stylesheet_directory_uri().'/css/dynamic.php', array(), time());
+        wp_enqueue_style('theme_dynamic', get_stylesheet_directory_uri().'/css/dynamic.css', array(), filemtime(get_stylesheet_directory().'/css/dynamic.css'));
         wp_enqueue_style('print', get_stylesheet_directory_uri().'/css/print.css', array(), '', 'print');
 
         // Header scripts
