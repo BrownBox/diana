@@ -23,3 +23,8 @@ img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
 #wpadminbar #wp-admin-bar-root-default .bb.wip .ab-item, #wpadminbar #wp-admin-bar-root-default .bb.wip .ab-item:hover {background-color: darkorange;}
 #wpadminbar #wp-admin-bar-root-default .bb.prod .ab-item, #wpadminbar #wp-admin-bar-root-default .bb.prod .ab-item:hover,
 #wpadminbar #wp-admin-bar-root-default .bb.stable .ab-item, #wpadminbar #wp-admin-bar-root-default .bb.stable .ab-item:hover {background-color: green;}
+
+/* List Posts */
+.bb_posts_wrapper {list-style: none;}
+.bb_posts_item {text-align: center;}
+.bb_posts_item img {border-radius: 50%; padding: 2rem;}

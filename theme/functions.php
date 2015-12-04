@@ -14,6 +14,9 @@ add_filter('wp_title', array('bb_theme', 'title'), 10, 2);
 add_action('admin_bar_menu', array('bb_theme', 'custom_adminbar'), 999);
 add_filter('template_include', array('bb_theme', 'template_name'), 10);
 
+// Shortcodes
+add_shortcode('list_posts', array('bb_theme', 'list_posts'));
+
 // The master class
 class bb_theme {
     static function section($args) {
@@ -47,6 +50,58 @@ class bb_theme {
         echo ' </div>' . "\n";
         echo '</' . $type . '>' . "\n";
         echo '<!-- end ' . $name . ' -->' . "\n";
+    }
+
+    static function list_posts($args) {
+        is_array($args) ? extract($args) : parse_str($args);
+
+//         if (!isset($layout)) {
+            $layout = 'default';
+//         }
+        if (!isset($outer_element)) {
+            $outer_element = 'ul';
+        }
+        if (!isset($inner_element)) {
+            $inner_element = 'li';
+        }
+        if (!isset($type)) {
+            $type = 'post'; // any valid post type
+        }
+
+        if (post_type_exists($type)) {
+            $args = array(
+                    'post_type' => $type,
+                    'posts_per_page' => -1,
+            );
+            $posts = get_posts($args);
+            if (count($posts) > 0) {
+                switch ($layout) {
+                    case 'accordion': // @todo
+                        break;
+                    case 'tabs': // @todo
+                        break;
+                    default:
+                        echo '<'.$outer_element.' class="bb_posts_wrapper row small-up-1 medium-up-2 large-up-3">'."\n";
+                        foreach ($posts as $item) {
+                            echo '  <'.$inner_element.' class="bb_posts_item column">'."\n";
+                            if (!empty($item->post_content)) {
+                                echo '    <a href="'.get_the_permalink($item).'">'."\n";
+                            }
+                            if (has_post_thumbnail($item->ID)) {
+                                $image_data = wp_get_attachment_image_src(get_post_thumbnail_id($item->ID), 'full');
+                                echo '      <img src="'.$image_data[0].'">'."\n";
+                            }
+                            echo $item->post_title."\n";
+                            if (!empty($item->post_content)) {
+                                echo '    </a>';
+                            }
+                            echo '  </'.$inner_element.'>'."\n";
+                        }
+                        echo '</'.$outer_element.'>'."\n";
+                        break;
+                }
+            }
+        }
     }
 
     static function onclick($args) {
