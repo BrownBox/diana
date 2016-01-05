@@ -50,3 +50,14 @@ function convert_colour($colour, $as = 'string') {
         return $hex; // returns the hex value including the number sign (#)
     }
 }
+
+/**
+ * Convert a hex colour to a semi-transparent RGBA
+ * @param string $hex
+ * @param float $opacity
+ * @return string
+ */
+function colour_opacity($hex, $opacity){
+    $rgba = 'rgba('.convert_colour($hex).', '.$opacity.')';
+    return $rgba;
+}

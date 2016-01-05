@@ -1,9 +1,6 @@
 <?php bb_theme::section( 'name=footer&file=footer.php&inner_class=row&type=footer' ); ?>
-    					<!-- content goes here -->
-    					</section>
-    				    <a class="exit-off-canvas"></a>
-				    </div>
-				</div>
+				<!-- content goes here -->
+				</section>
 			</div>
 		</div><!-- end everything -->
 		<?php wp_footer(); ?>

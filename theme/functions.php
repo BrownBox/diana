@@ -126,6 +126,71 @@ class bb_theme {
         }
     }
 
+    /**
+     * Generate series of helper CSS classes for the page wrapper based on the page content
+     * @param string $classes Custom classes to include
+     * @param boolean $post_atts Whether to include post slug and ID classes
+     * @return string
+     */
+    static function classes($classes, $post_atts = true) {
+        global $post;
+        $class = array();
+
+        $class[] = $args;
+        $class[] = (is_archive())       ? 'archive' : 'not-archvie';
+        $class[] = (is_attachment())    ? 'attachment' : 'not-attachment';
+        $class[] = (is_front_page())    ? 'frontpage' : 'not-frontpage';
+        $class[] = (is_home())          ? 'home' : 'not-home';
+        $class[] = (is_page())          ? 'page' : 'not-page';
+        $class[] = (is_search())        ? 'search' : 'not-search';
+        $class[] = (is_single())        ? 'single' : 'not-single';
+        $class[] = (is_sticky())        ? 'sticky' : 'not-sticky';
+        $class[] = (is_tax())           ? 'tax' : 'not-tax';
+        if ($post_atts == true) {
+            $class[] = $post->post_name;
+            $class[] = 'post-'.$post->ID;
+        }
+
+        $class = implode(' ', $class);
+        return $class;
+    }
+
+    /**
+     * Generates a Zurb Interchange HTML element
+     * @see http://foundation.zurb.com/sites/docs/interchange.html
+     * @param array $args
+     * @param boolean $echo
+     * @return void|string
+     */
+    static function interchange($args, $echo = true) {
+        is_array($args) ? extract($args) : parse_str($args);
+        if (!$small || !$medium || !$large ) {
+            return;
+        }
+        if (empty($element)) {
+            $element = 'img';
+        }
+
+        $html = '<'.$element.' data-interchange="['.$small.', small], ['.$medium.', medium], ['.$large.', large]"';
+        if (!empty($attrs)) {
+            if (is_array($attrs)) {
+                $attr_string = '';
+                foreach ($attrs as $attr => $value) {
+                    $attr_string .= ' '.$attr.'="'.$value.'"';
+                }
+            } else {
+                $attr_string = $attrs;
+            }
+            $html .= ' '.$attr_string;
+        }
+        $html .= '>';
+        if ($echo) {
+            echo $html."\n";
+        } else {
+            return $html;
+        }
+    }
+
     static function onclick($args) {
         // last updated 19/07/2014
         is_array($args) ? extract($args) : parse_str($args);
@@ -321,6 +386,17 @@ class bb_theme {
                 ),
         );
         $wp_admin_bar->add_node($args);
+
+        $args = array(
+                'id' => 'bb-css',
+                'title' => 'CSS',
+                'href' => '?css=refresh',
+                'meta' => array(
+                        'class' => 'bb css',
+                ),
+        );
+        $wp_admin_bar->add_node($args);
+        if($_GET['css']=='refresh') generate_dynamic_styles();
     }
 
     static function template_name($t) {

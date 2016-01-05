@@ -37,32 +37,32 @@ function fx_theme_customizer(WP_Customize_Manager $wp_customize) {
 	)));
 
 	// Pallet
-	$wp_customize->add_section(ns_.'pallet', array(
-		'title'    => 'Theme Pallet',
-		'description' => 'Enter number of colors. Click save and reload the page.',
+	$wp_customize->add_section(ns_.'palette', array(
+		'title'    => 'Theme Palette',
+		'description' => 'Enter number of colours. Click save and reload the page.',
 		'priority' => 50,
 	));
 	// inputs
 	$wp_customize->add_setting(ns_.'font', array('default' => 'Raleway'));
 	$wp_customize->add_control(ns_.'font', array(
 		'label'    => __('Primary Font', ns_),
-		'section'  => ns_.'pallet',
+		'section'  => ns_.'palette',
 		'type'     => 'text',
 		'priority' => 5,
 	));
-	$wp_customize->add_setting(ns_.'colors', array('default' => '8'));
-	$wp_customize->add_control(ns_.'colors', array(
-		'label'    => __('Number of colors in the pallet', ns_),
-		'section'  => ns_.'pallet',
+	$wp_customize->add_setting(ns_.'colours', array('default' => '6'));
+	$wp_customize->add_control(ns_.'colours', array(
+		'label'    => __('Number of colours in the palette', ns_),
+		'section'  => ns_.'palette',
 		'type'     => 'text',
 		'priority' => 10,
 	));
-	$colors = (get_theme_mod(ns_.'colors') == null) ? '8' : get_theme_mod(ns_.'colors');
-	for ($i=1; $i<=$colors; $i++) {
-		$wp_customize->add_setting(ns_.'color'.$i, array('default' => '#FFFFFF', 'sanitize_callback' => 'sanitize_hex_color',));
-		$wp_customize->add_control(new WP_Customize_Color_Control( $wp_customize, ns_.'color'.$i, array(
-			'label'    => __(ns_.'color'.$i, ns_),
-			'section'  => ns_.'pallet',
+	$colours = (get_theme_mod(ns_.'colours') == null) ? '8' : get_theme_mod(ns_.'colours');
+	for ($i=1; $i<=$colours; $i++) {
+		$wp_customize->add_setting(ns_.'colour'.$i, array('default' => '#FFFFFF', 'sanitize_callback' => 'sanitize_hex_color',));
+		$wp_customize->add_control(new WP_Customize_Color_Control( $wp_customize, ns_.'colour'.$i, array(
+			'label'    => __(ns_.'colour'.$i, ns_),
+			'section'  => ns_.'palette',
 			'priority' => 10+$i,
 		)));
     }
@@ -106,14 +106,45 @@ add_action('customize_register', 'fx_theme_customizer');
 
 add_action('customize_save_after', 'generate_dynamic_styles');
 function generate_dynamic_styles() {
+    $styles = '';
     $font = get_theme_mod(ns_.'font');
-    $colour_count = get_theme_mod(ns_.'pallet');
+    $colour_count = get_theme_mod(ns_.'colours');
     for ($i = 1; $i <= $colour_count; $i++) {
-        ${'colour'.$i} = get_theme_mod(ns_.'color'.$i);
+        ${'colour'.$i} = get_theme_mod(ns_.'colour'.$i);
+        $styles .= '.text'.$i.' {color: '.${'colour'.$i}.';} ';
+        $styles .= '.bg'.$i.' {background-color: '.${'colour'.$i}.';} ';
+        $styles .= '.htext'.$i.':hover {color: '.${'colour'.$i}.';} ';
+        $styles .= '.hbg'.$i.':hover {background-color: '.${'colour'.$i}.';} '."\n";
     }
 
-    $styles = <<<EOS
+    $styles .= <<<EOS
 body, h1, h2, h3, h4, h5, h6 {font-family: "$font", sans-serif;}
+
+/*
+Dynamic colour palette
+1: Menu and Footer background
+2: Menu items, Buttons and Links
+3: Footer text (except links)
+4: Heading text and callout backgrounds
+5: CTAs
+6: Hero text
+*/
+
+nav.top-bar, footer {background-color: $colour1;}
+
+a:link, a:link:hover, a:visited, a:link:focus {color: $colour2;}
+button, .button {background-color: white; color: $colour2; border: 3px solid $colour2;}
+button:hover, button:focus, .button:hover, .button:focus {background-color: $colour2; color: white;}
+
+footer {color: $colour3;}
+
+h1, h2, h3, h4, h5, h6 {color: $colour4;}
+.callout-box {background-color: $colour4;}
+
+.cta {background-color: $colour5;}
+
+.hero h1 {color: $colour6;}
+
 EOS;
     file_put_contents(get_stylesheet_directory().'/css/dynamic.css', $styles);
 }

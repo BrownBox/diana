@@ -24,9 +24,9 @@ wp_head(); ?>
     </head>
     <body>
     <!-- start everything -->
-    <div class="s-everything">
-                    <header data-swiftype-index='false' class="hide-for-print">
+    <div class="<?php echo bb_theme::classes('everything'); ?>">
+        <header data-swiftype-index='false' class="hide-for-print clearfix">
 <?php locate_template( array( 'sections/nav.php' ), true );?>
 <?php bb_theme::section( 'name=top&file=top.php&inner_class=row-full' ); ?>
-                    </header>
-                    <section class="main-section">
+        </header>
+        <section class="main-section">

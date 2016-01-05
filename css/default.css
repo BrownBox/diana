@@ -1,9 +1,30 @@
 body {position: static !important;}
 
+a:link:hover {opacity: 0.75;}
+
 .hero {min-height: 350px; background-size: cover; background-position: center center;}
 
 .uppercase {text-transform: uppercase;}
 .lowercase {text-transform: lowercase;}
+.title {display: block; width: 100%;}
+.sticky {position: inherit; transform: none; z-index: auto;}
+
+hr.clear {background: rgba(0, 0, 0, 0) none repeat scroll 0 0; border: medium none; clear: both; display: block; height: 0; margin: 0; width: 100%;}
+
+.no-padding {padding: 0px;}
+.no-padding-top {padding-top: 0px;}
+.no-padding-right {padding-right: 0px;}
+.no-padding-bottom {padding-bottom: 0px;}
+.no-padding-left {padding-left: 0px;}
+
+.text-white {color:#fff;}
+.text-black {color:#000;} 
+.htext-white:hover {color:#fff;} 
+.htext-black:hover {color:#000;}
+.bg-white {background-color:#fff;} 
+.bg-black {background-color:#000;} 
+.hbg-white:hover {background-color:#fff;} 
+.hbg-black:hover {background-color:#000;}
 
 #template-name {background-color: rgba(255, 255, 255, 0.25); bottom: 0; display: inline-block; opacity: 0.5; padding: 1rem; position: fixed; right: 0;}
 
@@ -23,6 +44,7 @@ img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
 #wpadminbar #wp-admin-bar-root-default .bb.wip .ab-item, #wpadminbar #wp-admin-bar-root-default .bb.wip .ab-item:hover {background-color: darkorange;}
 #wpadminbar #wp-admin-bar-root-default .bb.prod .ab-item, #wpadminbar #wp-admin-bar-root-default .bb.prod .ab-item:hover,
 #wpadminbar #wp-admin-bar-root-default .bb.stable .ab-item, #wpadminbar #wp-admin-bar-root-default .bb.stable .ab-item:hover {background-color: green;}
+.bb.css a::before {content: ""; top: 2px;}
 
 /* List Posts */
 .bb_posts_wrapper {list-style: none;}
