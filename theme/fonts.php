@@ -28,9 +28,6 @@ class bb_fonts {
         echo '      <a style="font-size:0.8em;position: relative;top: -15px;" href="https://typekit.com/">https://typekit.com/</a>'."\n";
         bb_theme::field(array('title' => 'Kit ID', 'group' => 'theme_fonts', 'name' => ns_.'typekit', 'type' => 'text', 'size' => '100%', 'max_width' => '600px'));
 
-        echo '      <h2 style="margin-top:40px;">Icon Fonts</h2>'."\n".'      <hr style="margin: 20px 0;border: 0; height: 1px; background:#ddd; "/>'."\n";
-        bb_theme::field(array('title' => 'Font Awesome', 'group' => 'theme_fonts', 'name' => ns_.'fa430', 'type' => 'checkbox', 'description' => '<a href="http://fortawesome.github.io/Font-Awesome/icons/">http://fortawesome.github.io/Font-Awesome/icons/</a>'));
-
         submit_button();
         settings_fields('theme_fonts_group');
 

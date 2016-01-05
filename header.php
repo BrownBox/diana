@@ -13,20 +13,20 @@ if (has_post_thumbnail()) {
         <meta class='swiftype' name='image' data-type='enum' content='<?php echo $thumbnail[0]; ?>'>
 <?php
 }
+?>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<?php
+$favicon = get_theme_mod(ns_.'favicon');
+if($favicon) echo '        <link rel="icon" href="'.$favicon.'" type="image/png">'."\n";
 
-$favicon = get_theme_mod( ns_.'favicon' );
-if( $favicon ) echo '        <link rel="icon" href="'.$favicon.'" type="image/png">'."\n";
-
-$theme_fonts = get_option( 'theme_fonts' ); // enable font-icons from wp-admin/appearance/font settings
-if( $theme_fonts[ns_."fa430"] == 'true' ) echo '        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">'."\n"; // Font Awesome 4.3.0
-
-wp_head(); ?>
+wp_head();
+?>
     </head>
     <body>
     <!-- start everything -->
     <div class="<?php echo bb_theme::classes('everything'); ?>">
         <header data-swiftype-index='false' class="hide-for-print clearfix">
-<?php locate_template( array( 'sections/nav.php' ), true );?>
-<?php bb_theme::section( 'name=top&file=top.php&inner_class=row-full' ); ?>
+<?php locate_template(array('sections/nav.php'), true );?>
+<?php bb_theme::section('name=top&file=top.php&inner_class=row-full'); ?>
         </header>
         <section class="main-section">
