@@ -402,9 +402,11 @@ class bb_theme {
     static function template_name($t) {
         if (current_user_can('manage_options')) {
             $template_name = get_page_template_slug(get_queried_object_id());
-            if (empty($template_name))
+            if (empty($template_name)) {
                 $template_name = '(default)';
-            echo '<div id="template-name">' . basename($t) . ' > ' . $template_name . '</div>' . "\n";
+            }
+            $template_name = basename($t).' > '.$template_name;
+            add_action('wp_footer', function($arg) use ($template_name) {echo '<div id="template-name">'.$template_name.'</div>'."\n";});
         }
         return $t;
     }
