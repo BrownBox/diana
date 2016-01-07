@@ -1,5 +1,5 @@
 <?php
-// http://themefoundation.com/wordpress-theme-customizer/
+add_action('customize_register', 'fx_theme_customizer');
 function fx_theme_customizer(WP_Customize_Manager $wp_customize) {
 	// Key Images (Desktop Logo, Mobile Logo and Favicon)
 	$wp_customize->add_section(ns_.'theme_images_section', array(
@@ -102,9 +102,13 @@ function fx_theme_customizer(WP_Customize_Manager $wp_customize) {
 	));
 
 }
-add_action('customize_register', 'fx_theme_customizer');
 
-add_action('customize_save_after', 'generate_dynamic_styles');
+add_action('customize_save_after', 'update_dynamic_styles');
+function update_dynamic_styles() {
+    $styles = generate_dynamic_styles();
+    file_put_contents(get_stylesheet_directory().'/css/dynamic.css', $styles);
+}
+
 function generate_dynamic_styles() {
     $styles = '';
     $font = get_theme_mod(ns_.'font');
@@ -146,5 +150,19 @@ h1, h2, h3, h4, h5, h6 {color: $colour4;}
 .hero h1 {color: $colour6;}
 
 EOS;
-    file_put_contents(get_stylesheet_directory().'/css/dynamic.css', $styles);
+    return $styles;
+}
+
+// Hack to load dynamic styles in head while in Customizer, so that changes show up on save without having to reload the page.
+global $wp_customize;
+if (isset($wp_customize)) {
+    function load_customizer_css() {
+        $styles = generate_dynamic_styles();
+?>
+        <style type="text/css">
+            <?php echo $styles; ?>
+        </style>
+<?php
+    }
+    add_action('wp_head', 'load_customizer_css');
 }
