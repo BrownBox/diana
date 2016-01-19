@@ -84,46 +84,47 @@ class bb_theme {
                         $no_images = array();
 
                         // Primary items (ones with a featured image)
-                        echo '<'.$outer_element.' class="bb_posts_wrapper row small-up-1 medium-up-2 large-up-3">'."\n";
+                        $final_content .= '<'.$outer_element.' class="bb_posts_wrapper row small-up-1 medium-up-2 large-up-3">'."\n";
                         foreach ($posts as $item) {
                             if (!has_post_thumbnail($item->ID)) {
                                 $no_images[] = $item;
                                 continue;
                             }
-                            echo '  <'.$inner_element.' class="bb_posts_item column">'."\n";
+                            $final_content .= '  <'.$inner_element.' class="bb_posts_item column">'."\n";
                             if (!empty($item->post_content)) {
-                                echo '    <a href="'.get_the_permalink($item).'">'."\n";
+                                $final_content .= '    <a href="'.get_the_permalink($item).'">'."\n";
                             }
                             $image_data = wp_get_attachment_image_src(get_post_thumbnail_id($item->ID), 'full');
-                            echo '      <img src="'.$image_data[0].'">'."\n";
-                            echo $item->post_title."\n";
+                            $final_content .= '      <img src="'.$image_data[0].'">'."\n";
+                            $final_content .= $item->post_title."\n";
                             if (!empty($item->post_content)) {
-                                echo '    </a>';
+                                $final_content .= '    </a>';
                             }
-                            echo '  </'.$inner_element.'>'."\n";
+                            $final_content .= '  </'.$inner_element.'>'."\n";
                         }
-                        echo '</'.$outer_element.'>'."\n";
+                        $final_content .= '</'.$outer_element.'>'."\n";
 
                         // Secondary items (no image)
                         if (count($no_images) > 0) {
-                            echo '<'.$outer_element.' class="bb_posts_subwrapper">'."\n";
+                            $final_content .= '<'.$outer_element.' class="bb_posts_subwrapper">'."\n";
                             foreach ($no_images as $item) {
-                                echo '  <'.$inner_element.' class="bb_posts_subitem">'."\n";
+                                $final_content .= '  <'.$inner_element.' class="bb_posts_subitem">'."\n";
                                 if (!empty($item->post_content)) {
-                                    echo '    <a href="'.get_the_permalink($item).'">'."\n";
+                                    $final_content .= '    <a href="'.get_the_permalink($item).'">'."\n";
                                 }
-                                echo $item->post_title."\n";
+                                $final_content .= $item->post_title."\n";
                                 if (!empty($item->post_content)) {
-                                    echo '    </a>';
+                                    $final_content .= '    </a>';
                                 }
-                                echo '  </'.$inner_element.'>'."\n";
+                                $final_content .= '  </'.$inner_element.'>'."\n";
                             }
-                            echo '</'.$outer_element.'>'."\n";
+                            $final_content .= '</'.$outer_element.'>'."\n";
                         }
                         break;
                 }
             }
         }
+        return $final_content;
     }
 
     /**
@@ -171,7 +172,7 @@ class bb_theme {
             $element = 'img';
         }
 
-        $html = '<'.$element.' data-interchange="['.$small.', small], ['.$medium.', medium], ['.$large.', large]"';
+        $html = '<'.$element.' data-interchange="['.$small.', small], ['.$medium.', medium], ['.$large.', large]" src="'.$large.'"';
         if (!empty($attrs)) {
             if (is_array($attrs)) {
                 $attr_string = '';
