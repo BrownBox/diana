@@ -15,6 +15,9 @@ $theme_files = array(
     array('file' => 'extract.php',         'dir' => 'fx'),
     array('file' => 'slug.php',            'dir' => 'fx'),
 
+    // Miscellaneous utilities
+    array('file' => 'cookies.php', 'dir' => 'utils'),
+
     // Information architecture
     array('file' => 'functions.php',       'dir' => 'ia'),
 
