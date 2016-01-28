@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html <?php language_attributes(); ?>>
     <head>
         <title><?php wp_title('|', true, 'right'); ?></title>
         <meta charset="UTF-8">
@@ -22,9 +22,9 @@ if($favicon) echo '        <link rel="icon" href="'.$favicon.'" type="image/png"
 wp_head();
 ?>
     </head>
-    <body>
+    <body <?php body_class(); ?>>
     <!-- start everything -->
-    <div class="<?php echo bb_theme::classes('everything'); ?>">
+    <div class="everything">
         <header data-swiftype-index='false' class="hide-for-print clearfix">
 <?php locate_template(array('sections/nav.php'), true );?>
 <?php bb_theme::section('name=top&file=top.php&inner_class=row-full'); ?>

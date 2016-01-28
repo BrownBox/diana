@@ -3,6 +3,9 @@
 // Enable featured images
 add_theme_support('post-thumbnails');
 
+// Enable RSS support
+add_theme_support('automatic-feed-links');
+
 // Set defaults
 if (!isset($content_width))
     $content_width = 1000;
@@ -132,6 +135,7 @@ class bb_theme {
      * @param string $classes Custom classes to include
      * @param boolean $post_atts Whether to include post slug and ID classes
      * @return string
+     * @deprecated Use body_class() instead
      */
     static function classes($classes, $post_atts = true) {
         global $post;
