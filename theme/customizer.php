@@ -144,8 +144,9 @@ footer {color: $colour3;}
 
 h1, h2, h3, h4, h5, h6 {color: $colour4;}
 
-.callout-box {background-color: $colour4;}
-.callout-box:nth-of-type(2n) {background-color: $colour1;}
+.callout-wrapper {background-color: $colour4;}
+.callout-wrapper h1, .callout-wrapper h2, .callout-wrapper h3, .callout-wrapper h4, .callout-wrapper h5, .callout-wrapper h6 {color: $colour6;}
+.callout-wrapper:nth-of-type(2n) {background-color: $colour1;}
 
 .cta {background-color: $colour5;}
 
