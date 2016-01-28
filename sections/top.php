@@ -14,7 +14,6 @@ if (is_archive()) {
 $style = 'background-color: '.get_post_meta($post->ID, '_bb_hero_bgcolour', true).';';
 if (!empty($image)) {
     $style .= ' background-image: url('.$image.'); background-position: '.get_post_meta($post->ID, '_bb_hero_bgpos_y', true).' '.get_post_meta($post->ID, '_bb_hero_bgpos_x', true).';';
-}
 ?>
 <div class="hero small-24 medium-24 large-24 columns" style="<?php echo $style; ?>">
     <div class="row">
@@ -23,3 +22,6 @@ if (!empty($image)) {
    	    </div>
     </div>
 </div>
+<?php
+}
+?>
