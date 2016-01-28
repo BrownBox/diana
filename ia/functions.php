@@ -16,15 +16,12 @@ if (file_exists(dirname(__FILE__) . '/cmb2/init.php')) {
 	require_once dirname(__FILE__) . '/CMB2/init.php';
 }
 
-add_action('cmb2_admin_init', 'bb_cmb_register_demo_metabox');
-function bb_cmb_register_demo_metabox() {
+add_action('cmb2_admin_init', 'bb_cmb_register_hero_metabox');
+function bb_cmb_register_hero_metabox() {
 
 	// Start with an underscore to hide fields from custom fields list
 	$prefix = '_bb_hero_';
 
-	/**
-	 * Sample metabox to demonstrate each field type included
-	 */
 	$cmb = new_cmb2_box(array(
     		'id'            => $prefix . 'metabox',
     		'title'         => __('Hero', ns_),
