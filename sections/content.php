@@ -1,7 +1,26 @@
-<article class="small-24 medium-15 large-17 columns <?php post_class(); ?>">
-    <h1><?php the_title() ?></h1>
-    <?php the_content(); ?>
-</article>
+<?php
+$class = 'small-24 medium-15 large-17 columns';
+if (!is_singular()) {
+?>
+<div class="<?php echo $class; ?>">
+<?php
+$class = '';
+}
+while (have_posts()) {
+    the_post();
+?>
+    <article class="<?php echo $class ?> <?php post_class(); ?>">
+        <h1><?php the_title(); ?></h1>
+        <?php the_content(); ?>
+    </article>
+<?php
+}
+if (!is_singular()) {
+?>
+</div>
+<?php
+}
+?>
 <aside class="small-24 medium-9 large-7 columns">
-<?php get_sidebar(); ?>
+    <?php get_sidebar(); ?>
 </aside>
