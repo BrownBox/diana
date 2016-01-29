@@ -1,14 +1,22 @@
 <?php
-
 // Enable featured images
 add_theme_support('post-thumbnails');
 
 // Enable RSS support
 add_theme_support('automatic-feed-links');
 
+// Automatically include title tag
+add_theme_support('title-tag');
+
+add_editor_style('css/foundation-min.css');
+add_editor_style('css/default.css');
+add_editor_style('css/dynamic.css');
+add_editor_style('css/style.css');
+
 // Set defaults
-if (!isset($content_width))
+if (!isset($content_width)) {
     $content_width = 1000;
+}
 
 // Add filters
 add_filter('wp_title', array('bb_theme', 'title'), 10, 2);
@@ -327,17 +335,22 @@ class bb_theme {
 
     static function title($title, $sep) {
         global $paged, $page;
-        if (is_feed())
+        if (is_feed()) {
             return $title;
-            // Add the site name.
+        }
+
+        // Add the site name.
         $title .= get_bloginfo('name');
+
         // Add the site description for the home/front page.
         $site_description = get_bloginfo('description', 'display');
-        if ($site_description && (is_home() || is_front_page()))
+        if ($site_description && (is_home() || is_front_page())) {
             $title = "$title $sep $site_description";
-            // Add a page number if necessary.
-        if ($paged >= 2 || $page >= 2)
+        }
+        // Add a page number if necessary.
+        if ($paged >= 2 || $page >= 2) {
             $title = "$title $sep " . sprintf(__('Page %s', 'twentytwelve'), max($paged, $page));
+        }
         return $title;
     }
 

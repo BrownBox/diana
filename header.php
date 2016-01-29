@@ -1,7 +1,6 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
     <head>
-        <title><?php wp_title('|', true, 'right'); ?></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta class="swiftype" name="title" data-type="string" content="<?php the_title(); ?>">
