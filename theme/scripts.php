@@ -9,7 +9,6 @@ class bb_enqueue {
 
     public static function frontend_scripts() {
         // Core styles
-//         wp_enqueue_style('normalize', get_stylesheet_directory_uri().'/css/normalize.css');
         wp_enqueue_style('foundation', get_stylesheet_directory_uri().'/css/foundation.min.css');
 
         // Custom fonts (configured under Appearance -> Fonts)
@@ -26,8 +25,8 @@ class bb_enqueue {
 
         // Theme styles
         wp_enqueue_style('theme_default', get_stylesheet_directory_uri().'/css/default.css', array(), filemtime(get_stylesheet_directory().'/css/default.css'));
-        wp_enqueue_style('theme_style', get_stylesheet_directory_uri().'/css/style.css', array(), filemtime(get_stylesheet_directory().'/css/style.css'));
         wp_enqueue_style('theme_dynamic', get_stylesheet_directory_uri().'/css/dynamic.css', array(), filemtime(get_stylesheet_directory().'/css/dynamic.css'));
+        wp_enqueue_style('theme_style', get_stylesheet_directory_uri().'/css/style.css', array(), filemtime(get_stylesheet_directory().'/css/style.css'));
         wp_enqueue_style('print', get_stylesheet_directory_uri().'/css/print.css', array(), '', 'print');
 
         // Header scripts
