@@ -9,7 +9,7 @@ $class = '';
 while (have_posts()) {
     the_post();
 ?>
-    <article class="<?php echo $class ?> <?php post_class(); ?>">
+    <article <?php post_class($class); ?>>
         <h1><?php the_title(); ?></h1>
         <?php the_content(); ?>
     </article>
