@@ -132,7 +132,16 @@ add_action('customize_save_after', 'update_dynamic_styles');
 
 function update_dynamic_styles() {
     $styles = generate_dynamic_styles();
-    file_put_contents(get_stylesheet_directory().'/css/dynamic.css', $styles);
+    file_put_contents(get_stylesheet_directory().'/css/'.bb_get_dynamic_styles_filename(), $styles);
+}
+
+function bb_get_dynamic_styles_filename() {
+    $filename = 'dynamic.css';
+    if (is_multisite()) {
+        global $blog_id;
+        $filename = 'dynamic.'.$blog_id.'.css';
+    }
+    return $filename;
 }
 
 function generate_dynamic_styles() {
