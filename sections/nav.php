@@ -3,7 +3,7 @@
 $small_logo = get_theme_mod(ns_.'logo_small');
 ?>
         <button class="menu-icon" type="button" data-toggle></button>
-        <div class="title-bar-title"><?php echo $small_logo; ?></div>
+        <div class="title-bar-title"><img id="logo" src="<?php echo $small_logo; ?>" alt=""></div>
     </nav>
     <nav class="top-bar" id="top_menu">
         <section class="top-bar-left hide-for-small">
