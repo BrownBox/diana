@@ -414,7 +414,9 @@ class bb_theme {
                 ),
         );
         $wp_admin_bar->add_node($args);
-        if($_GET['css']=='refresh') generate_dynamic_styles();
+        if ($_GET['css'] == 'refresh') {
+            update_dynamic_styles();
+        }
     }
 
     static function template_name($t) {
