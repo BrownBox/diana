@@ -187,6 +187,13 @@ h1, h2, h3, h4, h5, h6 {color: $colour4;}
 
 .hero h1 {color: $colour6;}
 
+body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper {border-radius: 6px; border: 3px solid $colour2 !important;}
+body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper.s-active {background-color: $colour2; box-shadow: none;}
+body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper.s-active:hover {opacity: 1;}
+body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper.s-passive {background-color: $colour3;}
+body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper.s-passive:hover {background-color: $colour2;}
+body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper.s-passive:hover div.s-html-value {color: $colour3;}
+
 EOS;
     return $styles;
 }
