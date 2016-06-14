@@ -79,3 +79,7 @@ body .gform_wrapper .gfield_date_day label, body .gform_wrapper .gfield_date_mon
     .gform_wrapper .gsection {margin: 0;}
     .gform_wrapper .two-column .gform_column:nth-of-type(3), .gform_wrapper .three-column .gform_column:nth-of-type(4) {float: right;} /* Extra 1 because there's an empty one at the start */
 }
+
+/* Children as paragraphs */
+aside .menu.vertical > li > a {padding-left: 0; padding-right: 0;}
+aside .sticky {background-color: white;}
