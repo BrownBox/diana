@@ -70,12 +70,12 @@ label.gfield_label {font-size: 1rem;}
 body .gform_wrapper .gfield_date_day label, body .gform_wrapper .gfield_date_month label, body .gform_wrapper .gfield_date_year label, body .gform_wrapper .gfield_time_ampm label, body .gform_wrapper .gfield_time_hour label, body .gform_wrapper .gfield_time_minute label, body .gform_wrapper .ginput_complex label, body .gform_wrapper .instruction {margin-bottom: 1.5rem;}
 
 /* Add support for multi-column Gravity Forms */
+.gform_wrapper .two-column .gsection:not(.empty), .gform_wrapper .three-column .gsection:not(.empty) {display: none;}
+
 @media only screen and (min-width: 40.063em) { /* <-- min-width 641px, medium screens */
-    .gform_wrapper form.two-column {background-image: url('/wp-content/themes/maf2015/images/checkout_line.png'); background-repeat: repeat-y; background-position: top center;}
     .gform_wrapper ul.gform_column {float:left; display:inline-block; padding: 0.5rem 1.5rem; min-height: 100%;}
     .gform_wrapper .two-column .gform_column {width: 49.5%;}
     .gform_wrapper .three-column .gform_column {width: 33%;}
     .gform_wrapper .gsection {margin: 0;}
-    .gform_wrapper .two-column .gsection:not(.empty), .gform_wrapper .three-column .gsection:not(.empty) {display: none;}
     .gform_wrapper .two-column .gform_column:nth-of-type(3), .gform_wrapper .three-column .gform_column:nth-of-type(4) {float: right;} /* Extra 1 because there's an empty one at the start */
 }
