@@ -23,6 +23,7 @@ $theme_files = array(
     // Custom Gravity Forms pieces
     array('file' => 'australian_states.php', 'dir' => 'gf'), // <-- adds Australia address type
     array('file' => 'columns.php',          'dir' => 'gf'), // <-- adds support for multi-column Gravity Forms
+    array('file' => 'enable_fields.php',    'dir' => 'gf'), // <-- enables Credit Card and Password field types
 );
 
 foreach ($theme_files as $theme_file) {
