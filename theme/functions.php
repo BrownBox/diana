@@ -23,7 +23,7 @@ add_filter('wp_title', array('bb_theme', 'title'), 10, 2);
 
 // Add actions
 add_action('admin_bar_menu', array('bb_theme', 'custom_adminbar'), 999);
-add_filter('template_include', array('bb_theme', 'template_name'), 10);
+add_filter('template_include', array('bb_theme', 'template_name'), 9999);
 
 // Shortcodes
 add_shortcode('list_posts', array('bb_theme', 'list_posts'));
