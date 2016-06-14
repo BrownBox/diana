@@ -2,7 +2,7 @@
 <html <?php language_attributes(); ?>>
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta class="swiftype" name="title" data-type="string" content="<?php the_title(); ?>">
         <meta class='swiftype' name='type' data-type='enum' content='<?php echo ucfirst(get_post_type()); ?>'>
 <?php
