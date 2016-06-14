@@ -5,6 +5,7 @@ add_action('wp_enqueue_scripts', array('bb_enqueue', 'frontend_scripts'));
 class bb_enqueue {
     public static function admin_scripts() {
         wp_enqueue_style('admin', get_stylesheet_directory_uri().'/css/admin.css', array(), filemtime(get_stylesheet_directory().'/css/admin.css'));
+        wp_enqueue_style('dynamic', get_stylesheet_directory_uri().'/css/dynamic.css', array(), filemtime(get_stylesheet_directory().'/css/dynamic.css'));
     }
 
     public static function frontend_scripts() {
