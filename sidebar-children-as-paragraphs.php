@@ -8,24 +8,20 @@ if (!isset($children)) { // In theory section that includes the sidebar should b
     $children = bb_get_children($post);
 }
 
+$has_children = true;
 $menu_items = $children;
 if (empty($menu_items)) { // No children, get siblings
-    $menu_items = get_posts(array(
-            'posts_per_page' => 20,
-            'orderby' => 'menu_order, title',
-            'order' => 'ASC',
-            'post_type' => get_post_type($post),
-            'post_parent' => $post->post_parent
-    ));
+    $has_children = false;
+    $menu_items = bb_get_children($post->post_parent);
 }
 
 $menu = '';
 foreach ($menu_items as $item) {
     $menu .= '        <li>'."\n";
-    if (bb_has_children($item->ID)) {
-        $menu .= '            <a href="'.get_permalink($item->ID).'">'.$item->post_title.'</a>'."\n";
+    if (!$has_children || bb_has_children($item->ID)) {
+        $menu .= '            <a href="'.get_permalink($item->ID).'">'.$item->post_title.'</a><hr>'."\n";
     } else {
-        $menu .= '            <a href="#'.get_the_slug($item->ID).'">'.$item->post_title.'</a>'."\n";
+        $menu .= '            <a href="#'.get_the_slug($item->ID).'">'.$item->post_title.'</a><hr>'."\n";
     }
     $menu .= '        </li>'."\n";
 }
