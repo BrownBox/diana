@@ -13,6 +13,7 @@ $theme_files = array(
     array('file' => 'convert_colour.php',   'dir' => 'fx'),
     array('file' => 'extract.php',          'dir' => 'fx'),
     array('file' => 'slug.php',             'dir' => 'fx'),
+    array('file' => 'children.php',         'dir' => 'fx'),
 
     // Miscellaneous utilities
     array('file' => 'cookies.php',          'dir' => 'utils'),
