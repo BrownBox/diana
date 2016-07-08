@@ -14,6 +14,7 @@ $theme_files = array(
     array('file' => 'extract.php',          'dir' => 'fx'),
     array('file' => 'slug.php',             'dir' => 'fx'),
     array('file' => 'children.php',         'dir' => 'fx'),
+    array('file' => 'pagination.php',       'dir' => 'fx'),
 
     // Miscellaneous utilities
     array('file' => 'cookies.php',          'dir' => 'utils'),
